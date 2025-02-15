@@ -62,11 +62,15 @@ Resume: {resume}
 
 prompt = PromptTemplate(input_variables=["job_description", "resume"], template=template)
 
+google_api_key = st.secrets["GOOGLE_API_KEY"]
+
 # Initialize the Gemini model
-llm = ChatGoogleGenerativeAI(model="gemini-pro",
-                             verbose=True,
-                             temperature=0.0,
-                             google_api_key="AIzaSyDh3OmwHnBCgmjMDhFAV-mVSh9MGGw4h9I")
+llm = ChatGoogleGenerativeAI(
+    model="gemini-pro",
+    verbose=True,
+    temperature=0.0,
+    google_api_key=google_api_key
+)
 
 # Create the chain using RunnablePassthrough and RunnableSequence
 chain = (

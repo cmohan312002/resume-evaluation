@@ -4,9 +4,7 @@ import google.generativeai as genai
 import sys
 import io
 
-# 💡 Configure Gemini API Key (Hardcoded for now, replace with your key)
-GENAI_API_KEY = "AIzaSyDh3OmwHnBCgmjMDhFAV-mVSh9MGGw4h9I"  # Replace with your actual API key
-genai.configure(api_key=GENAI_API_KEY)
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
 # 💡 Define AI Prompt
 AI_PROMPT = """
