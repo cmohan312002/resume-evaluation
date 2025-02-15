@@ -24,11 +24,40 @@ def extract_text_from_pdf(uploaded_file):
 
 # Define the prompt template
 template = """
-You are an HR assistant. Evaluate the resume based on the job description.
+Provide a score from 1 to 10 and a short reason for your score.
+You are an experienced (HR) Human Resource Manager. Your task is to review the provided resume against the job description. 
+Please share your professional evaluation on whether the candidate's profile aligns with the role. 
+Highlight the strengths and weaknesses of the applicant in relation to the specified job requirements.
+
+        I need a comprehensive analysis of the following job description and resume. 
+        Provide the report in the following format:
+
+        1. *Overall Match Percentage*:
+        - Provide a percentage value indicating how well the resume matches the job description.
+        - Example: “Your resume matches 80% of the job requirements.”
+
+        2. *Detailed Skill Match*:
+        - List the skills from the job description that match the resume.
+        - Highlight the missing skills explicitly.
+        - Example:
+            - Matched Skills: JavaScript, React, Node.js.
+            - Missing Skills: GraphQL, Docker.
+
+        3. *Experience Insights*:
+        - Indicate whether the candidate's experience aligns with the job description.
+        - Example: “You meet the required 3 years of experience in software development.”
+
+        4. *Improvement Tips*:
+        - Suggest actionable steps to improve the resume for better alignment with the job description.
+        - Examples:
+            - “Add the keyword ‘GraphQL’ to align with the job description.”
+            - “Consider detailing your experience with Docker in a project or job role.”
+        - Include examples or templates for improvement if applicable
+        
+Provide improvement suggestions based on job descriptions.
 Job Description: {job_description}
 Resume: {resume}
 
-Provide a score from 1 to 10 and a short reason for your score.
 """
 
 prompt = PromptTemplate(input_variables=["job_description", "resume"], template=template)
